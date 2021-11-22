@@ -18,13 +18,14 @@ class GetCommicsUseCase @Inject constructor(
     operator fun invoke(ts: String, apiKey: String, hash: String): Flow<Resource<CommicsMapper>> = flow {
 
         try {
-            emit(Resource.Loading())
+
+            emit(Resource.Loading(data = CommicsMapper()))
             val commics = repository.getCommics(ts = ts, apiKey = apiKey, hash = hash)
             emit(Resource.Success(commics.toCommics()))
         }catch (e: HttpException){
-            emit(Resource.Error(e.localizedMessage))
+            emit(Resource.Error(message = e.localizedMessage ?: "An unexpected error occured", data = CommicsMapper()))
         }catch (e: IOException){
-            emit(Resource.Error(e.message!!))
+            emit(Resource.Error(message = e.message ?: "Couldn't reach server. Check your internet connection.", data = CommicsMapper()))
         }
     }
 

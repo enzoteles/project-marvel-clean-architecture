@@ -1,11 +1,11 @@
+/*
 package com.example.projeto_marvel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.projeto_marvel.presentation.ui.commics.viewmodel.GetCommicsViewModel
+import com.example.projeto_marvel.presentation.ui.list_characters.viewmodel.GetCommicsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import example.projeto_marvel.common.Constants
 import java.math.BigInteger
@@ -46,4 +46,4 @@ class MainActivity : AppCompatActivity() {
             val md = MessageDigest.getInstance("MD5")
             return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
         }
-}
+}*/

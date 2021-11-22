@@ -39,6 +39,8 @@ fun ResultDTO.result(): ResultMapper {
         dates = dates.map { it.date() },
         prices = prices.map { it.price() },
         stories = stories.store(),
-        thumbnail = thumbnail.thumbanail()
+        thumbnail = thumbnail.thumbanail(),
+        title = title,
+        format = format
     )
 }
