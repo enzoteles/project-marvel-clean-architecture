@@ -1,5 +1,6 @@
 package example.projeto_marvel.data.remote
 
+import example.projeto_marvel.common.toPtBrRealStringWithoutSymbol
 import example.projeto_marvel.domain.model.PriceMapper
 
 data class PriceDTO(
@@ -9,7 +10,7 @@ data class PriceDTO(
 
 fun PriceDTO.price(): PriceMapper {
     return PriceMapper(
-        price = price,
+        price = price.toPtBrRealStringWithoutSymbol(),
         type = type
     )
 }

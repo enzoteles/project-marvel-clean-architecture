@@ -14,6 +14,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
+import example.projeto_marvel.common.DateTimeHelper
+import example.projeto_marvel.common.toPtBrRealStringWithoutSymbol
 import example.projeto_marvel.domain.model.ResultMapper
 
 @Composable
@@ -44,7 +46,7 @@ fun TopBarDetailCharacter(onClick: () -> Unit) {
     )
 }
 @Composable
-fun ContentDetail(character: ResultMapper) {
+fun ContentDetail(item: ResultMapper) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -57,7 +59,7 @@ fun ContentDetail(character: ResultMapper) {
             elevation = 2.dp
         ) {
             Image(
-                painter = rememberImagePainter("${character.thumbnail.path}.${character.thumbnail.extension}"),
+                painter = rememberImagePainter("${item.thumbnail.path}.${item.thumbnail.extension}"),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -67,13 +69,20 @@ fun ContentDetail(character: ResultMapper) {
         }
 
         Text(
-            text = "Character Name",
+            text = item.title,
             style = MaterialTheme.typography.subtitle2,
-            modifier = Modifier.padding(top = 8.dp),
+            modifier = Modifier.padding(start = 16.dp, top = 8.dp),
             fontSize = 20.sp
         )
         Text(
-            text = "Character Description",
+            text = item.stories.collectionURI,
+            style = MaterialTheme.typography.body2,
+            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 8.dp),
+            textAlign = TextAlign.Left,
+            fontSize = 14.sp
+        )
+        Text(
+            text = "Data: ${item.dates[0].date}",
             style = MaterialTheme.typography.body2,
             modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 8.dp),
             textAlign = TextAlign.Left,
@@ -81,7 +90,7 @@ fun ContentDetail(character: ResultMapper) {
         )
 
         Text(
-            text = "Date: 15/07/2021",
+            text = "Price: R$ ${item.prices[0].price}",
             style = MaterialTheme.typography.body2,
             modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 8.dp),
             textAlign = TextAlign.Left,
@@ -89,15 +98,7 @@ fun ContentDetail(character: ResultMapper) {
         )
 
         Text(
-            text = "Price: $2.00",
-            style = MaterialTheme.typography.body2,
-            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 8.dp),
-            textAlign = TextAlign.Left,
-            fontSize = 14.sp
-        )
-
-        Text(
-            text = "Character Apparence Comics List",
+            text = item.format,
             style = MaterialTheme.typography.subtitle2,
             modifier = Modifier.fillMaxWidth().padding(start = 16.dp, top = 8.dp),
             textAlign = TextAlign.Center,
