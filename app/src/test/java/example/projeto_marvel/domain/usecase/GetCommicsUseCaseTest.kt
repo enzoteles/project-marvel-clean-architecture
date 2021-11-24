@@ -3,6 +3,7 @@ package example.projeto_marvel.domain.usecase
 import com.google.common.truth.Truth.assertThat
 import example.projeto_marvel.common.Constants
 import example.projeto_marvel.common.Resource
+import example.projeto_marvel.common.Utils
 import example.projeto_marvel.data.remote.*
 import example.projeto_marvel.data.repository.FakeCommicsRepository
 import kotlinx.coroutines.flow.collect
@@ -45,7 +46,7 @@ class GetCommicsUseCaseTest{
     @Test
     fun `checking the success status api`(): Unit = runBlocking{
 
-        val commic = repository.getCommics(Constants.TS, Constants.PUBLIC_KEY,"f5b79b9e274627e5f2719ba6fdc855cc")
+        val commic = repository.getCommics(Constants.TS, Constants.PUBLIC_KEY,Utils.md5(Constants.PATH_MD))
         val firstItem = commic.data.results.first()
 
         assertEquals(firstItem.id, 82967)

@@ -18,7 +18,6 @@ class GetCommicsUseCase @Inject constructor(
     operator fun invoke(ts: String, apiKey: String, hash: String): Flow<Resource<CommicsMapper>> = flow {
 
         try {
-
             emit(Resource.Loading(data = CommicsMapper()))
             val commics = repository.getCommics(ts = ts, apiKey = apiKey, hash = hash)
             emit(Resource.Success(commics.toCommics()))

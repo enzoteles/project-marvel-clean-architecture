@@ -11,6 +11,7 @@ import com.example.projeto_marvel.presentation.ui.list_characters.components.Get
 import dagger.hilt.android.lifecycle.HiltViewModel
 import example.projeto_marvel.common.Constants
 import example.projeto_marvel.common.Resource
+import example.projeto_marvel.common.Utils
 import example.projeto_marvel.domain.usecase.GetCommicsUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -29,7 +30,7 @@ class GetCommicsViewModel @Inject constructor(
 
     init {
         val str1 = "${Constants.TS}${Constants.PRIVATE_KEY}${Constants.PUBLIC_KEY}"
-        val str = md5(str1)
+        val str = Utils.md5(Constants.PATH_MD)
         getCommics(Constants.TS, Constants.PUBLIC_KEY, str)
     }
 
@@ -54,11 +55,6 @@ class GetCommicsViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
-    }
-
-    fun md5(input:String): String {
-        val md = MessageDigest.getInstance("MD5")
-        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
     }
 }
 
