@@ -14,7 +14,6 @@ import org.junit.Test
 
 class GetCommicsUseCaseTest{
 
-
     lateinit var repository: FakeCommicsRepository
     lateinit var useCase: GetCommicsUseCase
 
@@ -25,8 +24,8 @@ class GetCommicsUseCaseTest{
     }
 
     @Test
-    fun `checking the api statuses`(): Unit = runBlocking {
-        useCase.invoke(Constants.TS, Constants.PUBLIC_KEY,"f5b79b9e274627e5f2719ba6fdc855cc").collect{ result->
+    fun `checking the api status`(): Unit = runBlocking {
+        useCase.invoke(Constants.TS, Constants.PUBLIC_KEY, Utils.md5(Constants.PATH_MD)).collect{ result->
 
             when(result){
                 is Resource.Loading->{
@@ -41,7 +40,6 @@ class GetCommicsUseCaseTest{
             }
         }
     }
-
 
     @Test
     fun `checking the success status api`(): Unit = runBlocking{
