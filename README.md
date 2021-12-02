@@ -26,3 +26,8 @@ No Android, as corrotinas ajudam a gerenciar tarefas de longa duração que pode
 O retrofit torna nossa HTTP API em interface java
 
 
+Telas do Projeto abaixo:
+
+<img width="380" alt="Screen Shot 2021-12-02 at 17 33 41" src="https://user-images.githubusercontent.com/5742609/144498735-0908fe56-d030-417f-9f05-eb227f8e8f5e.png">
+
+<img width="376" alt="Screen Shot 2021-12-02 at 17 33 53" src="https://user-images.githubusercontent.com/5742609/144498742-b10252ae-ca2d-4bb6-966e-0dbb474be91e.png">
